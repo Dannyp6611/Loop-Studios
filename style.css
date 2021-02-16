@@ -81,7 +81,7 @@ h1, h2, h3 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-bottom: 4rem;
+    padding-bottom: 6rem;
 }
 
 .nav {
@@ -90,6 +90,12 @@ h1, h2, h3 {
     align-items: center;
     flex-wrap: wrap;
     padding: 4rem 0;
+}
+
+.mobile__nav {
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    display: none;
 }
 
 .nav__links li {
@@ -115,8 +121,6 @@ h1, h2, h3 {
     opacity: 1;
 }
 
-
-
 .nav__links li:not(:last-child) {
     margin-right: 1.5rem;
 }
@@ -128,27 +132,9 @@ h1, h2, h3 {
 .nav__hamburger {
     display: none;
     outline: none;
-    transition: all 0.3s forwards;
-}
-.nav__hamburger > span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin-bottom: .5rem;
-    background-color: #fff;
+    transition: all 0.3s ease;
 }
 
-.nav__hamburger:active span:nth-child(1) {
-    transform: translateY(13px) rotate(45deg);
-}
-
-.nav__hamburger:active span:nth-child(2) {
-    display: none;
-}
-
-.nav__hamburger:active span:nth-child(3) {
-    transform: translateY(-13px) rotate(-45deg);
-}
 
 .header h1 {
     text-transform: uppercase;
@@ -232,6 +218,9 @@ h1, h2, h3 {
 
 .project {
     position: relative;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
 
 .project h3 {
@@ -245,58 +234,41 @@ h1, h2, h3 {
 
 .project:nth-child(1) {
     background-image: url("./images/desktop/image-deep-earth.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+   
 }
 
 .project:nth-child(2) {
     background-image: url("./images/desktop/image-night-arcade.jpg");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+   
 }
 
 .project:nth-child(3) {
     background-image: url("./images/desktop/image-soccer-team.jpg");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+   
 }
 
 .project:nth-child(4) {
     background-image: url("./images/desktop/image-grid.jpg");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+    
 }
 
 .project:nth-child(5) {
     background-image: url("./images/desktop/image-from-above.jpg");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+  
 }
 
 .project:nth-child(6) {
     background-image: url("./images/desktop/image-pocket-borealis.jpg");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+   
 }
 
 .project:nth-child(7) {
     background-image: url("./images/desktop/image-curiosity.jpg");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
 }
 
 .project:nth-child(8) {
     background-image: url("./images/desktop/image-fisheye.jpg");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+    
 }
 
 /**** FOOTER SECTION ****/
@@ -399,6 +371,39 @@ h1, h2, h3 {
 }
 
 @media only screen and (max-width: 799px) {
+
+    .nav__links {
+        display: none;
+    }
+
+    .mobile__nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--black);
+    }
+
+    .mobile__links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .mobile__links li a {
+        font-size: 4rem;
+        color: var(--white);
+    }
+
+    .nav.open + .mobile__nav {
+        transform: translate(0);
+    }
+
+    header {
+        background-image: url("./images/mobile/image-hero.jpg");
+    }
     .creations {
         text-align: center;
     }
@@ -425,6 +430,49 @@ h1, h2, h3 {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(8, 150px);
     }
+
+    .project:nth-child(1) {
+        background-image: url("./images/mobile/image-deep-earth.jpg");
+       
+    }
+    
+    .project:nth-child(2) {
+        background-image: url("./images/mobile/image-night-arcade.jpg");
+       
+    }
+    
+    .project:nth-child(3) {
+        background-image: url("./images/mobile/image-soccer-team.jpg");
+       
+    }
+    
+    .project:nth-child(4) {
+        background-image: url("./images/mobile/image-grid.jpg");
+        
+    }
+    
+    .project:nth-child(5) {
+        background-image: url("./images/mobile/image-from-above.jpg");
+      
+    }
+    
+    .project:nth-child(6) {
+        background-image: url("./images/mobile/image-pocket-borealis.jpg");
+       
+    }
+    
+    .project:nth-child(7) {
+        background-image: url("./images/mobile/image-curiosity.jpg");
+    }
+    
+    .project:nth-child(8) {
+        background-image: url("./images/mobile/image-fisheye.jpg");
+        
+    }
+
+
+
+
     .header {
         padding-bottom: 14rem;
     }
@@ -436,7 +484,31 @@ h1, h2, h3 {
         display: block;
         position: relative;
         z-index: 2;
+        width: 3rem;
     }
+
+    .nav__hamburger::after, .nav__hamburger::before, .nav__hamburger div {
+        background-color: #fff;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  height: 3px;
+  margin: 7px 0;
+  transition: all .2s ease-in-out;
+    }
+
+    .nav.open .nav__hamburger::before {
+        transform: translateY(8px) rotate(135deg);
+      }
+      
+      .nav.open .nav__hamburger::after {
+        transform: translateY(-12px) rotate(-135deg);
+      }
+      
+      .nav.open .nav__hamburger div {
+        transform: scale(0);
+      }
+     
 
     .logo {
         width: 120px;
@@ -444,19 +516,19 @@ h1, h2, h3 {
         z-index: 2;
     }
 
-    .nav__links {
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: var(--black);
-        position: fixed;
-        transition: all 0.3s ease-in-out;
-        transform: translateX(-100%);
+   
+    /*** MOBILE TOGGLE ****/
+   
+    .nav.open .nav__hamburger > span:nth-child(1) {
+        transform: translateY(12px) rotate(135deg);
     }
 
-    .nav__links.open {
-        transform: translateX(0);
+    .nav.open .nav__hamburger > span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav.open .nav__hamburger > span:nth-child(3) {
+        transform: translateY(-12px) rotate(-135deg);
     }
 
     .leader__hero {
